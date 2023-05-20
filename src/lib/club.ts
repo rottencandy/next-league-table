@@ -53,6 +53,8 @@ const CLUBS_DATA = RAW_DATA.reduce<{ [name: string]: Club }>((acc, val) => {
         } else {
             club1.points++;
             club2.points++;
+            club1.drawn++;
+            club2.drawn++;
         }
     }
     return acc;
