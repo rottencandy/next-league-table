@@ -51,6 +51,10 @@ const CLUBS_DATA = RAW_DATA.reduce<{ [name: string]: Club }>((acc, val) => {
         const score2 = val.score[club2Name];
         club1.played++;
         club2.played++;
+        club1.goalsScored += score1;
+        club2.goalsScored += score2;
+        club1.goalsConceded += score2;
+        club2.goalsConceded += score1;
 
         if (score1 > score2) {
             club1.won++;
