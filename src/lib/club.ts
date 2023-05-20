@@ -68,3 +68,7 @@ export const getClubsByPos = (): Club[] => {
     clubs.sort((c1, c2) => c2.points - c1.points)
     return clubs;
 };
+
+export const getClubs = () => Object.keys(CLUBS_DATA);
+
+export const clubByName = (name: string) => CLUBS_DATA[name];
