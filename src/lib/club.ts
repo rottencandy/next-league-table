@@ -14,6 +14,7 @@ export type Club = {
 };
 
 export type Fixture = {
+    key: string;
     date: Date;
     clubs: { [name: string]: number };
 };
@@ -42,8 +43,8 @@ const CLUBS_DATA = RAW_DATA.reduce<{ [name: string]: Club }>((acc, val) => {
     acc[club2Name] = acc[club2Name] || defaultData(club2Name);
     const club1 = acc[club1Name];
     const club2 = acc[club2Name];
-    club1.fixtures.push({ date, clubs: val.score });
-    club2.fixtures.push({ date, clubs: val.score });
+    club1.fixtures.push({ date, clubs: val.score, key: club1Name + club2Name });
+    club2.fixtures.push({ date, clubs: val.score, key: club1Name + club2Name });
 
     if (isPast(date)) {
         const score1 = val.score[club1Name];
