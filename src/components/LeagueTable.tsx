@@ -1,17 +1,6 @@
 import Link from "next/link";
 import { getClubsByPos } from "@/lib/club";
 
-const headers = [
-    'Position',
-    'Club',
-    'Played',
-    'Won',
-    'Drawn',
-    'Lost',
-    'GD',
-    'Points',
-];
-
 const LeagueTable = () => {
     const clubs = getClubsByPos();
 
@@ -19,9 +8,14 @@ const LeagueTable = () => {
         <table>
             <thead>
                 <tr>
-                    {headers.map(h => (
-                        <th key={h}>{h}</th>
-                    ))}
+                    <th>Position</th>
+                    <th>Club</th>
+                    <th>Played</th>
+                    <th>Won</th>
+                    <th>Drawn</th>
+                    <th>Lost</th>
+                    <th><abbr title="Goal Difference">GD</abbr></th>
+                    <th>Points</th>
                 </tr>
             </thead>
 
