@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getClubsByPos } from "../lib/club";
 
 const headers = [
@@ -28,7 +29,11 @@ const LeagueTable = () => {
                 {clubs.map((c, i) => (
                     <tr key={c.name}>
                         <td>{i + 1}</td>
-                        <td>{c.name}</td>
+                        <td>
+                            <Link href={`/fixtures/${c.name.replace(' ', '-')}`}>
+                                {c.name}
+                            </Link>
+                        </td>
                         <td>{c.played}</td>
                         <td>{c.won}</td>
                         <td>{c.drawn}</td>
