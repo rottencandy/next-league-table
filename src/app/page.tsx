@@ -1,12 +1,15 @@
 import LeagueTable from '@/components/LeagueTable';
 import styles from './page.module.css'
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <>
-        <main className={styles.main}>
-            <h1 className={styles.title}>League table</h1>
+        <header>
+            <h1 className={styles.header}><Link href="/">League table</Link></h1>
+        </header>
 
+        <main className={styles.main}>
             <section>
                 <LeagueTable />
             </section>

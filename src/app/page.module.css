@@ -2,8 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6rem;
+  padding: 4rem;
   min-height: 100vh;
+}
+
+.header {
+  color: rgb(var(--primary-color));
+  padding: 2rem 4rem;
+}
+
+.header > a {
+  text-decoration: none;
 }
 
 /* Enable hover only on non-touch devices */

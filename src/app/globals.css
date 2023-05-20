@@ -2,6 +2,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary-color: 24, 54, 72;
+  --secondary-color: 24, 74, 52;
 }
 
 * {
@@ -13,7 +15,9 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  margin: 0 auto;
+  font-family: "Helvetica", "Arial", sans-serif;
+  color: #555;
 }
 
 body {
@@ -27,5 +31,10 @@ body {
 }
 
 a {
-  color: inherit;
+  color: rgb(var(--secondary-color));
+}
+
+nav {
+  position: sticky;
+  top: 0;
 }
