@@ -1,7 +1,7 @@
 import { clubByName, getClubs, isPast } from "@/lib/club";
 import Link from "next/link";
 import styles from './page.module.css'
-import { compareAsc } from "date-fns";
+import { compareAsc, format } from "date-fns";
 
 export default function Layout ({ params }: { params: { club: string }}) {
     const { club: name } = params;
@@ -22,19 +22,42 @@ export default function Layout ({ params }: { params: { club: string }}) {
                 <h2>{club.name}</h2>
 
                 <section>
-                    <table>
-                        <caption>Upcoming games</caption>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <h3>Upcoming games</h3>
+                    <ul>
+                        {upcoming.map(f => {
+                            const date = format(f.date, 'dd/MM, HH:mm');
+                            const [club1, club2] = Object.keys(f.clubs);
+
+                            return (
+                                <li key={f.key}>
+                                    <div>{date}</div>
+                                    <div>
+                                        <span>{club1} (.)</span> x <span>{club2} (.)</span>
+                                    </div>
+                                </li>
+                            );
+                        })}
+                    </ul>
                 </section>
 
                 <section>
-                    <table>
-                        <caption>Past games</caption>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <h3>Past games</h3>
+                    <ul>
+                        {past.map(f => {
+                            const date = format(f.date, 'dd/MM, HH:mm');
+                            const [club1, club2] = Object.keys(f.clubs);
+                            const [score1, score2] = Object.values(f.clubs);
+
+                            return (
+                                <li key={f.key}>
+                                    <div>{date}</div>
+                                    <div>
+                                        <span>{club1} ({score1})</span> x <span>{club2} ({score2})</span>
+                                    </div>
+                                </li>
+                            );
+                        })}
+                    </ul>
                 </section>
             </main>
         </>
