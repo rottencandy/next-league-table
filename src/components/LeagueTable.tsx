@@ -42,12 +42,4 @@ const LeagueTable = () => {
     );
 };
 
-export function getStaticProps() {
-    const clubs = getClubsByPos();
-
-    return {
-        props: { clubs },
-    };
-}
-
 export default LeagueTable;
