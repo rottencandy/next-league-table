@@ -10,12 +10,18 @@ export type Club = {
     points: number;
     goalsScored: number;
     goalsConceded: number;
+    fixtures: Fixture[];
+};
+
+export type Fixture = {
+    date: Date;
+    clubs: { [name: string]: number };
 };
 
 // 5 May 2021, 2pm
 const TODAY = new Date('2021-05-05T14:00:00');
 
-const isPast = (date: Date) => compareAsc(date, TODAY) < 0;
+export const isPast = (date: Date) => compareAsc(date, TODAY) < 0;
 
 const defaultData = (name: string): Club => ({
     name,
@@ -26,6 +32,7 @@ const defaultData = (name: string): Club => ({
     points: 0,
     goalsScored: 0,
     goalsConceded: 0,
+    fixtures: [],
 });
 
 const CLUBS_DATA = RAW_DATA.reduce<{ [name: string]: Club }>((acc, val) => {
@@ -33,10 +40,12 @@ const CLUBS_DATA = RAW_DATA.reduce<{ [name: string]: Club }>((acc, val) => {
     const [club1Name, club2Name] = Object.keys(val.score);
     acc[club1Name] = acc[club1Name] || defaultData(club1Name);
     acc[club2Name] = acc[club2Name] || defaultData(club2Name);
+    const club1 = acc[club1Name];
+    const club2 = acc[club2Name];
+    club1.fixtures.push({ date, clubs: val.score });
+    club2.fixtures.push({ date, clubs: val.score });
 
     if (isPast(date)) {
-        const club1 = acc[club1Name];
-        const club2 = acc[club2Name];
         const score1 = val.score[club1Name];
         const score2 = val.score[club2Name];
         club1.played++;

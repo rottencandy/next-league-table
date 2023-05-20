@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getClubsByPos } from "../lib/club";
+import { getClubsByPos } from "@/lib/club";
 
 const headers = [
     'Position',
