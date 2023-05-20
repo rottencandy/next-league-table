@@ -1,4 +1,6 @@
 import { clubByName, getClubs } from "@/lib/club";
+import Link from "next/link";
+import styles from './page.module.css'
 
 export default function Layout ({ params }: { params: { club: string }}) {
     const { club: name } = params;
@@ -6,8 +8,14 @@ export default function Layout ({ params }: { params: { club: string }}) {
 
     return (
         <>
-            <h1>{club.name}</h1>
-            <div>hello world</div>
+            <nav>
+                <Link href="/">Home</Link>
+            </nav>
+
+            <main className={styles.main}>
+                <h1>Fixtures</h1>
+                <h2>{club.name}</h2>
+            </main>
         </>
     );
 };
