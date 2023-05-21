@@ -1,7 +1,8 @@
 import { clubByName, getClubs, isPast } from "@/lib/club";
 import Link from "next/link";
 import styles from './page.module.css'
-import { compareAsc, format } from "date-fns";
+import { compareAsc } from "date-fns";
+import FixturesList from "@/components/FixturesList";
 
 export default function Layout ({ params }: { params: { club: string }}) {
     const { club: name } = params;
@@ -13,50 +14,24 @@ export default function Layout ({ params }: { params: { club: string }}) {
 
     return (
         <>
-            <nav>
-                <Link href="/">Home</Link>
-            </nav>
+            <header>
+                <h1 className={styles.header}><Link href="/">Home</Link></h1>
+            </header>
 
             <main className={styles.main}>
-                <h1>Fixtures</h1>
-                <h2>{club.name}</h2>
+                <h2>Fixtures - {club.name}</h2>
 
                 <section>
                     <h3>Upcoming games</h3>
                     <ul>
-                        {upcoming.map(f => {
-                            const date = format(f.date, 'dd/MM, HH:mm');
-                            const [club1, club2] = Object.keys(f.clubs);
-
-                            return (
-                                <li key={f.key}>
-                                    <div>{date}</div>
-                                    <div>
-                                        <span>{club1} (.)</span> x <span>{club2} (.)</span>
-                                    </div>
-                                </li>
-                            );
-                        })}
+                        <FixturesList fixtures={upcoming} />
                     </ul>
                 </section>
 
                 <section>
                     <h3>Past games</h3>
                     <ul>
-                        {past.map(f => {
-                            const date = format(f.date, 'dd/MM, HH:mm');
-                            const [club1, club2] = Object.keys(f.clubs);
-                            const [score1, score2] = Object.values(f.clubs);
-
-                            return (
-                                <li key={f.key}>
-                                    <div>{date}</div>
-                                    <div>
-                                        <span>{club1} ({score1})</span> x <span>{club2} ({score2})</span>
-                                    </div>
-                                </li>
-                            );
-                        })}
+                        <FixturesList fixtures={past} />
                     </ul>
                 </section>
             </main>
