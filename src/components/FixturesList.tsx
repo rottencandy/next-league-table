@@ -1,7 +1,9 @@
 import { Fixture, isPast } from "@/lib/club";
 import { format } from "date-fns";
 
-export default function FixturesList({ fixtures }: { fixtures: Fixture[] }) {
+import ClubFixtureLink from "./ClubFixtureLink";
+
+const FixturesList = ({ fixtures }: { fixtures: Fixture[] }) => {
 
     return (
         <div className="fixture">
@@ -13,15 +15,21 @@ export default function FixturesList({ fixtures }: { fixtures: Fixture[] }) {
 
             return (
                 <li key={f.key}>
-                    <div>{date}</div>
-                    <div>
-                        <span>{club1}</span>
+                    <div className="date">{date}</div>
+                    <div className="teams">
+                        <span className="team">
+                            <ClubFixtureLink name={club1} />
+                        </span>
                         {past ? `${score1} - ${score2}` : ' v '}
-                        <span>{club2}</span>
+                        <span className="team">
+                            <ClubFixtureLink name={club2} />
+                        </span>
                     </div>
                 </li>
             );
         })}
         </div>
    );
-}
+};
+
+export default FixturesList;

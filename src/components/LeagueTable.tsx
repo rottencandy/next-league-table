@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { getClubsByPos } from "@/lib/club";
 
 import './LeagueTable.css';
+import ClubFixtureLink from "./ClubFixtureLink";
 
 const LeagueTable = () => {
     const clubs = getClubsByPos();
@@ -29,9 +29,7 @@ const LeagueTable = () => {
                         <tr key={c.name}>
                             <td className="position">{i + 1}</td>
                             <td className="club">
-                                <Link href={`/fixtures/${c.name.replace(' ', '-')}`}>
-                                    {c.name}
-                                </Link>
+                                <ClubFixtureLink name={c.name} />
                             </td>
                             <td>{c.played}</td>
                             <td>{c.won}</td>
