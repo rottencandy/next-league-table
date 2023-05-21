@@ -4,7 +4,7 @@ table.league {
 }
 
 table.league tr:nth-child(even) {
-  background-color: #ab96;
+  background-color: var(--secondary-color);
 }
 
 table.league th {

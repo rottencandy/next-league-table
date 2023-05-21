@@ -1,5 +1,5 @@
 header {
-  background-color: rgb(var(--secondary-color));
+  background-color: rgb(var(--primary-color-rgb));
   padding: 2rem 4rem;
   position: sticky;
   top: 0;

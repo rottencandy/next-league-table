@@ -2,8 +2,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --primary-color: 24, 54, 72;
-  --secondary-color: 24, 74, 52;
+  --primary-color-rgb: 24, 74, 52;
+  --secondary-color: #ab96;
   --gray-color: #444;
   --lightgray-color: #ccc;
 }
@@ -32,5 +32,5 @@ body {
 }
 
 a {
-  color: rgb(var(--secondary-color));
+  color: rgb(var(--primary-color-rgb));
 }
