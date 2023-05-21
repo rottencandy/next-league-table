@@ -15,21 +15,21 @@ export default function Layout ({ params }: { params: { club: string }}) {
     return (
         <>
             <header>
-                <h1 className={styles.header}><Link href="/">Home</Link></h1>
+                <h1 className={styles.header}><Link href="/">League table</Link></h1>
             </header>
 
             <main className={styles.main}>
-                <h2>Fixtures - {club.name}</h2>
+                <h2><b>{club.name}</b> - Fixtures</h2>
 
                 <section>
-                    <h3>Upcoming games</h3>
+                    <h3 className={styles.subtitle}>Upcoming</h3>
                     <ul>
                         <FixturesList fixtures={upcoming} />
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Past games</h3>
+                    <h3 className={styles.subtitle}>Past</h3>
                     <ul>
                         <FixturesList fixtures={past} />
                     </ul>
