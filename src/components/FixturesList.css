@@ -1,0 +1,83 @@
+.fixture {
+  width: 70%;
+}
+
+.fixture li {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em 0;
+}
+
+.fixture .date {
+  font-size: 1.2em;
+  font-weight: 300;
+  color: var(--gray-color);
+}
+
+.fixture .teams {
+  font-size: 1.4em;
+  padding: 1em;
+  width: 70%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.fixture .score {
+  color: var(--gray-color);
+  position: absolute;
+}
+
+.fixture .score.past {
+  color: black;
+  font-weight: 600;
+}
+
+.fixture .gap {
+  flex-grow: 1;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .fixture {
+    width: 95%;
+  }
+
+  .fixture li {
+    padding: 0.8em 0;
+  }
+
+  .fixture .date {
+    font-size: 0.8em;
+  }
+
+  .fixture .teams {
+    font-size: 0.9em;
+    padding: 0.5em;
+    width: 95%;
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .fixture {
+    width: 80%;
+  }
+
+  .fixture li {
+    padding: 1.2em 0;
+  }
+
+  .fixture .date {
+    font-size: 1em;
+  }
+
+  .fixture .teams {
+    font-size: 1em;
+    padding: 0.8em;
+    width: 85%;
+  }
+}

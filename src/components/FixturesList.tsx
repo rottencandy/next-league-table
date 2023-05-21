@@ -1,6 +1,7 @@
 import { Fixture, isPast } from "@/lib/club";
 import { format } from "date-fns";
 
+import './FixturesList.css';
 import ClubFixtureLink from "./ClubFixtureLink";
 
 const FixturesList = ({ fixtures }: { fixtures: Fixture[] }) => {
@@ -20,7 +21,10 @@ const FixturesList = ({ fixtures }: { fixtures: Fixture[] }) => {
                         <span className="team">
                             <ClubFixtureLink name={club1} />
                         </span>
-                        {past ? `${score1} - ${score2}` : ' v '}
+                        <span className="gap" />
+                        <span className={`score ${past ? 'past' : ''}`}>
+                            {past ? `${score1} - ${score2}` : 'v'}
+                        </span>
                         <span className="team">
                             <ClubFixtureLink name={club2} />
                         </span>
