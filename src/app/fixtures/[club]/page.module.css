@@ -1,6 +1,11 @@
 .main {
-  padding: 4rem;
+  padding: 2rem 4rem;
   min-height: 100vh;
+}
+
+.main > h2 {
+  font-size: 2.1em;
+  font-weight: 200;
 }
 
 .header {
@@ -12,12 +17,12 @@
   text-decoration: none;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-}
-
-/* Disable all animations */
-@media (prefers-reduced-motion) {
+.subtitle {
+  font-size: 2em;
+  font-weight: 300;
+  max-width: 35%;
+  border-bottom: 1px solid green;
+  margin: 1em;
 }
 
 /* Mobile */
@@ -25,11 +30,29 @@
   .main {
     padding: 1rem;
   }
+
+  .main > h2 {
+    font-size: 1.5em;
+  }
+
+  .subtitle {
+    font-size: 1.3em;
+    max-width: 55%;
+  }
 }
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .main {
     padding: 2rem;
+  }
+
+  .main > h2 {
+    font-size: 2.0em;
+  }
+
+  .subtitle {
+    font-size: 1.6em;
+    max-width: 45%;
   }
 }
