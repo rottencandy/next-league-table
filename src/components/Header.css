@@ -1,8 +1,11 @@
 header {
-  color: rgb(var(--primary-color));
+  background-color: rgb(var(--secondary-color));
   padding: 2rem 4rem;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 3px 10px var(--gray-color);
 }
 
-header > a {
-  text-decoration: none;
+header a {
+  color: var(--lightgray-color);
 }

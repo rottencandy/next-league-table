@@ -8,15 +8,6 @@
   font-weight: 200;
 }
 
-.header {
-  color: rgb(var(--primary-color));
-  padding: 2rem 4rem;
-}
-
-.header > a {
-  text-decoration: none;
-}
-
 .subtitle {
   font-size: 2em;
   font-weight: 300;
