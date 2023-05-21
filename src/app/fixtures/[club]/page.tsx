@@ -13,29 +13,23 @@ export default function Layout ({ params }: { params: { club: string }}) {
     const upcoming = fixtures.filter(f => !isPast(f.date));
 
     return (
-        <>
-            <header>
-                <h1 className={styles.header}><Link href="/">League table</Link></h1>
-            </header>
+        <main className={styles.main}>
+            <h2><b>{club.name}</b> - Fixtures</h2>
 
-            <main className={styles.main}>
-                <h2><b>{club.name}</b> - Fixtures</h2>
+            <section>
+                <h3 className={styles.subtitle}>Upcoming</h3>
+                <ul>
+                    <FixturesList fixtures={upcoming} />
+                </ul>
+            </section>
 
-                <section>
-                    <h3 className={styles.subtitle}>Upcoming</h3>
-                    <ul>
-                        <FixturesList fixtures={upcoming} />
-                    </ul>
-                </section>
-
-                <section>
-                    <h3 className={styles.subtitle}>Past</h3>
-                    <ul>
-                        <FixturesList fixtures={past} />
-                    </ul>
-                </section>
-            </main>
-        </>
+            <section>
+                <h3 className={styles.subtitle}>Past</h3>
+                <ul>
+                    <FixturesList fixtures={past} />
+                </ul>
+            </section>
+        </main>
     );
 };
 

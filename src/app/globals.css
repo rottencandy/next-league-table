@@ -34,8 +34,3 @@ body {
 a {
   color: rgb(var(--secondary-color));
 }
-
-nav {
-  position: sticky;
-  top: 0;
-}
