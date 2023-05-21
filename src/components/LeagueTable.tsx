@@ -1,21 +1,23 @@
 import Link from "next/link";
 import { getClubsByPos } from "@/lib/club";
 
+import './LeagueTable.css';
+
 const LeagueTable = () => {
     const clubs = getClubsByPos();
 
     return (
-        <table>
+        <table className="league">
             <thead>
                 <tr>
-                    <th>Position</th>
-                    <th>Club</th>
-                    <th>Played</th>
-                    <th>Won</th>
-                    <th>Drawn</th>
-                    <th>Lost</th>
-                    <th><abbr title="Goal Difference">GD</abbr></th>
-                    <th>Points</th>
+                    <th className="position">Position</th>
+                    <th className="club">Club</th>
+                    <th className="played">Played</th>
+                    <th className="won">Won</th>
+                    <th className="drawn">Drawn</th>
+                    <th className="lost">Lost</th>
+                    <th className="gd"><abbr title="Goal Difference">GD</abbr></th>
+                    <th className="points">Points</th>
                 </tr>
             </thead>
 
@@ -25,8 +27,8 @@ const LeagueTable = () => {
 
                     return (
                         <tr key={c.name}>
-                            <td>{i + 1}</td>
-                            <td>
+                            <td className="position">{i + 1}</td>
+                            <td className="club">
                                 <Link href={`/fixtures/${c.name.replace(' ', '-')}`}>
                                     {c.name}
                                 </Link>
@@ -35,7 +37,7 @@ const LeagueTable = () => {
                             <td>{c.won}</td>
                             <td>{c.drawn}</td>
                             <td>{c.lost}</td>
-                            <td>{gd >= 0 ? `+${gd}` : gd}</td>
+                            <td className="gd">{gd >= 0 ? `+${gd}` : gd}</td>
                             <td>{c.points}</td>
                         </tr>
                     );

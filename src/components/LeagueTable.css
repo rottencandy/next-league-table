@@ -1,0 +1,82 @@
+table.league {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+table.league tr:nth-child(even) {
+  background-color: #ab96;
+}
+
+table.league th {
+  font-size: 1.2em;
+  color: #444;
+  font-weight: 400;
+  padding-bottom: 1rem;
+}
+
+table.league th.club {
+  padding-right: 8rem;
+  text-align: left;
+}
+
+table.league td {
+  font-size: 1.4em;
+  padding: 1.3rem 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+table.league td.position {
+  color: #555;
+}
+
+table.league td.gd {
+  font-weight: 600;
+}
+
+table.league td.club {
+  padding-top: 1rem;
+  text-align: left;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  table.league {
+    width: 100%;
+  }
+
+  table.league th {
+    font-size: 0.9em;
+    padding-bottom: 0.7rem;
+  }
+
+  table.league th.club {
+    padding-right: 4rem;
+  }
+
+  table.league td {
+    font-size: 1em;
+    padding: 1rem 0;
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  table.league {
+    width: 95%;
+  }
+
+  table.league th {
+    font-size: 1.1em;
+    padding-bottom: 0.9rem;
+  }
+
+  table.league th.club {
+    padding-right: 6rem;
+  }
+
+  table.league td {
+    font-size: 1.2em;
+    padding: 1.1rem 0;
+  }
+}
