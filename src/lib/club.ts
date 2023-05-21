@@ -36,40 +36,39 @@ const defaultData = (name: string): Club => ({
     fixtures: [],
 });
 
-const CLUBS_DATA = RAW_DATA.reduce<{ [name: string]: Club }>((acc, val) => {
+const calculateMatchScore = (club: Club, goals: number, opponentGoals: number) => {
+    club.played++;
+    club.goalsScored += goals;
+    club.goalsConceded += opponentGoals;
+
+        if (goals > opponentGoals) {
+            club.won++;
+            club.points += 3;
+        } else if (goals < opponentGoals) {
+            club.lost++;
+        } else {
+            club.drawn++;
+            club.points++;
+        }
+    return club;
+};
+
+const CLUBS_DATA = RAW_DATA.reduce<{ [name: string]: Club }>((acc, val, i) => {
     const date = new Date(val.date);
     const [club1Name, club2Name] = Object.keys(val.score);
     acc[club1Name] = acc[club1Name] || defaultData(club1Name);
     acc[club2Name] = acc[club2Name] || defaultData(club2Name);
     const club1 = acc[club1Name];
     const club2 = acc[club2Name];
-    club1.fixtures.push({ date, clubs: val.score, key: club1Name + club2Name });
-    club2.fixtures.push({ date, clubs: val.score, key: club1Name + club2Name });
+    const key = `${club1Name}-${club2Name}-${i}`;
+    club1.fixtures.push({ date, clubs: val.score, key });
+    club2.fixtures.push({ date, clubs: val.score, key });
 
     if (isPast(date)) {
         const score1 = val.score[club1Name];
         const score2 = val.score[club2Name];
-        club1.played++;
-        club2.played++;
-        club1.goalsScored += score1;
-        club2.goalsScored += score2;
-        club1.goalsConceded += score2;
-        club2.goalsConceded += score1;
-
-        if (score1 > score2) {
-            club1.won++;
-            club1.points += 3;
-            club2.lost++;
-        } else if (score1 < score2) {
-            club2.won++;
-            club2.points += 3;
-            club1.lost++;
-        } else {
-            club1.points++;
-            club2.points++;
-            club1.drawn++;
-            club2.drawn++;
-        }
+        calculateMatchScore(club1, score1, score2);
+        calculateMatchScore(club2, score2, score1);
     }
     return acc;
 }, {});
