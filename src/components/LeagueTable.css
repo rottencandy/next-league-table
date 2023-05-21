@@ -9,7 +9,7 @@ table.league tr:nth-child(even) {
 
 table.league th {
   font-size: 1.2em;
-  color: #444;
+  color: var(--gray-color);
   font-weight: 400;
   padding-bottom: 1rem;
 }
@@ -27,7 +27,7 @@ table.league td {
 }
 
 table.league td.position {
-  color: #555;
+  color: var(--gray-color);
 }
 
 table.league td.gd {

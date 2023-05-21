@@ -4,6 +4,7 @@
   --background-end-rgb: 255, 255, 255;
   --primary-color: 24, 54, 72;
   --secondary-color: 24, 74, 52;
+  --gray-color: #444;
 }
 
 * {
